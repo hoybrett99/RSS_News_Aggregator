@@ -15,7 +15,7 @@ RSS_FEEDS = {
     # 'ZNBC: Tourism and Arts': 'https://znbc.co.zm/news/category/tourism-arts-culture/feed/',
     # 'Zambia Diggers': 'https://diggers.news/rss/',
     'Kitwe News': 'https://kitweonline.com/feed',
-    # 'Daily Nations Zambia': 'https://dailynationzambia.com/feed/',
+    'Daily Nations Zambia': 'https://dailynationzambia.com/feed/',
     # 'Kitwe City Council': 'https://www.kitwecouncil.gov.zm/?feed=rss2',
     # 'Lusaka Times: Economy': 'https://www.lusakatimes.com/economy/feed/'
 }
@@ -35,6 +35,8 @@ def get_feed_entries(feed_url, pages=10):
 # CSV file path
 csv_file_path = 'C:/Users/hoybr/sessionworkspace/Kitwe/News Collector/rss_feed_data.csv'
 
+print('Loading...')
+
 # Open the CSV file for writing
 with open(csv_file_path, mode='w', newline='', encoding='utf-8') as file:
     writer = csv.writer(file)
@@ -45,7 +47,8 @@ with open(csv_file_path, mode='w', newline='', encoding='utf-8') as file:
     # Loop through each RSS feed
     for source_name, feed_url in RSS_FEEDS.items():
         # Get paginated entries for the feed
-        entries = get_feed_entries(feed_url, pages=8)
+        entries = get_feed_entries(feed_url, pages=10)
+        print(f'RSS Feed done: {source_name}')
         
         # Process each entry and write to CSV
         for entry in entries:
@@ -57,9 +60,3 @@ with open(csv_file_path, mode='w', newline='', encoding='utf-8') as file:
             writer.writerow([source_name, link, date, category])
 
 print(f"Data has been saved to {csv_file_path}")
-
-
-
-
-
-
