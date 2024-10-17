@@ -21,7 +21,7 @@ RSS_FEEDS = {
 }
 
 # Function to handle paginated feed entries
-def get_feed_entries(feed_url, pages=8):
+def get_feed_entries(feed_url, pages=10):
     all_entries = []
     for page in range(1, pages + 1):
         paged_url = f"{feed_url}?paged={page}"
